@@ -1,0 +1,81 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+  <parent>
+    <artifactId>abtest-parent</artifactId>
+    <groupId>com.dianping.abtest</groupId>
+    <version>0.0.1</version>
+  </parent>
+
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.dianping.abtest</groupId>
+
+  <artifactId>abtest-client</artifactId>
+  <packaging>jar</packaging>
+
+  <name>arch-abtest-client</name>
+  <url>http://maven.apache.org</url>
+
+  <properties>
+    <env>dev</env>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.jboss.netty</groupId>
+      <artifactId>netty</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>commons-codec</groupId><!-- use the Base64 codec function -->
+      <artifactId>commons-codec</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.dianping.abtest</groupId>
+      <artifactId>abtest-core</artifactId>
+    </dependency>
+    <!-- lion -->
+    <dependency>
+      <groupId>com.dianping.lion</groupId>
+      <artifactId>lion-client</artifactId>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.dianping.lion</groupId>
+      <artifactId>lion-${env}</artifactId>
+      <scope>provided</scope>
+    </dependency>
+    <!-- 监控 -->
+    <dependency>
+      <groupId>com.dianping.cat</groupId>
+      <artifactId>cat-core</artifactId>
+      <scope>provided</scope>
+    </dependency>
+  </dependencies>
+
+  <profiles>
+    <profile>
+      <id>product</id>
+      <activation>
+        <property>
+          <name>env</name>
+        </property>
+      </activation>
+      <build>
+        <resources>
+          <resource>
+            <!-- do not package to jar, for assembly -->
+            <directory>src/main/resources</directory>
+            <excludes>
+              <exclude>*</exclude>
+            </excludes>
+            <includes>
+              <include>META-INF/cat/client.xml</include>
+            </includes>
+          </resource>
+        </resources>
+      </build>
+    </profile>
+  </profiles>
+
+</project>

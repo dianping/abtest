@@ -1,0 +1,83 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+  <parent>
+    <artifactId>abtest-parent</artifactId>
+    <groupId>com.dianping.abtest</groupId>
+    <version>0.0.1</version>
+  </parent>
+
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.dianping.abtest</groupId>
+  <artifactId>abtest-core</artifactId>
+  <packaging>jar</packaging>
+
+  <name>arch-abtest-core</name>
+  <url>http://maven.apache.org</url>
+
+  <properties>
+    <env>dev</env>
+  </properties>
+
+  <dependencies>
+    <!-- Message核心类 -->
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-databind</artifactId>
+    </dependency>
+    <!-- Base64 -->
+    <dependency>
+      <groupId>commons-codec</groupId><!-- use the Base64 codec function -->
+      <artifactId>commons-codec</artifactId>
+      <optional>true</optional>
+    </dependency>
+    <!-- 使用codec需要依赖 -->
+    <dependency>
+      <groupId>org.jboss.netty</groupId>
+      <artifactId>netty</artifactId>
+      <optional>true</optional>
+    </dependency>
+    <dependency>
+      <groupId>com.caucho</groupId>
+      <artifactId>hessian</artifactId>
+      <optional>true</optional>
+    </dependency>
+    <dependency>
+      <groupId>org.mongodb</groupId>
+      <artifactId>mongo-java-driver</artifactId>
+      <optional>true</optional>
+    </dependency>
+    <dependency>
+      <groupId>com.caucho</groupId>
+      <artifactId>hessian</artifactId>
+      <optional>true</optional>
+    </dependency>
+    <dependency>
+      <groupId>com.dianping.lion</groupId>
+      <artifactId>lion-client</artifactId>
+      <optional>true</optional>
+    </dependency>
+    <dependency>
+      <groupId>com.dianping.lion</groupId>
+      <artifactId>lion-${env}</artifactId>
+      <optional>true</optional>
+    </dependency>
+    <dependency><!-- lion need log4j -->
+      <groupId>log4j</groupId>
+      <artifactId>log4j</artifactId>
+      <optional>true</optional>
+    </dependency>
+    <dependency>
+      <groupId>cglib</groupId>
+      <artifactId>cglib</artifactId>
+      <optional>true</optional>
+    </dependency>
+    <!-- 监控 -->
+    <dependency>
+      <groupId>com.dianping.cat</groupId>
+      <artifactId>cat-core</artifactId>
+      <optional>true</optional>
+    </dependency>
+  </dependencies>
+</project>
